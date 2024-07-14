@@ -1,6 +1,6 @@
 ---
 title: A Simple Python Tkinter-based Ollama GUI with no external dependencies
-date: 2024-07-14 10:42:18 +8000
+date: 2024-07-13 07:42:18 +8000
 categories: [Document]
 tags: [python]
 ---
