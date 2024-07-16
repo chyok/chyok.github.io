@@ -13,19 +13,26 @@ Hello everyone, I would like to share with you [ollama-gui](https://github.com/c
 
 The project is very simple, with no other dependencies, and can be run in a single file.
 
-![ollama-gui-1-1-0](https://github.com/user-attachments/assets/d70925e7-bc25-40f8-b1e0-6dca152a4e23)
+![ollama-gui-1 2 0](https://github.com/user-attachments/assets/a4bb979b-68a4-4062-b484-7542f2a866e0)
+
 
 It can serve as a first GUI page for beginners, without the need for Docker, VM or other dependencies, just Python (if not using the binary).
 
 
-## Features
-
-+ 🎨 One file project.
+## 🚀 Features
+### v1.1.0
++ 📁 One file project.
 + 📦 No external dependencies, only **tkinter** which is usually bundled.
 + 🔍 Auto check ollama model list.
 + 🌐 Customizable ollama host support.
 + 💬 Multiple conversations.
 + 📋 Menu bar and right-click menu.
++ 🛑 Stop generating at any time.
+
+### v1.2.0
++ 🗂️ Model Management: Download and Delete Models
++ 🎨 UI Enhancement: Bubble dialog theme
++ 📝 Editable Conversation History
 
 ## Run
 Choose any way you like:
