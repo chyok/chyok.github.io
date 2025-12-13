@@ -14,7 +14,7 @@ summary: "我的开源项目合集。"
 > 一个基于 Tkinter 的轻量级 Ollama GUI，无外部依赖，单文件运行。
 
 - **技术栈**: Python, Tkinter
-- **Stars**: 235+
+- **Stars**: {{< github_stars chyok ollama-gui >}}+
 - **特点**: 轻量级, 模型管理, 聊天界面.
 
 ---
@@ -23,7 +23,7 @@ summary: "我的开源项目合集。"
 > 基于 pygame-ce 编写的十滴水游戏，致敬经典 Flash 游戏 "Splash Back"。
 
 - **技术栈**: Python, Pygame-CE
-- **Stars**: 12+
+- **Stars**: {{< github_stars chyok ten-drops >}}+
 - **类型**: 益智游戏
 
 ---
@@ -32,7 +32,7 @@ summary: "我的开源项目合集。"
 > 简单的局域网文件传输命令行工具。
 
 - **技术栈**: Go
-- **Stars**: 12+
+- **Stars**: {{< github_stars chyok st >}}+
 - **特点**: 局域网自动发现, 快速传输.
 
 ---
@@ -41,4 +41,4 @@ summary: "我的开源项目合集。"
 > 轻量级 m3u8 视频下载工具，所有功能集成在一个独立的 HTML 文件中。
 
 - **技术栈**: HTML, JS
-- **Stars**: 9+
+- **Stars**: {{< github_stars chyok m3u8-downloader-minify >}}+

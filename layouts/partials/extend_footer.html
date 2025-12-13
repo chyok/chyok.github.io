@@ -1,0 +1,2 @@
+{{ $script := resources.Get "js/github_stars.js" | minify | fingerprint }}
+<script src="{{ $script.RelPermalink }}" defer></script>
