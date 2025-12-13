@@ -10,7 +10,7 @@ Here are some of my open source projects.
 
 ---
 
-### [open-webui](https://github.com/chyok/open-webui)
+### [ollama-gui](https://github.com/chyok/ollama-gui)
 > A single-file tkinter-based Ollama GUI project with no external dependencies.
 
 - **Stack**: Python, Tkinter
