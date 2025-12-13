@@ -127,13 +127,11 @@
     </h3>
     <div style="display: flex; flex-wrap: wrap; gap: 10px;">
         {{- range site.Data.techstack }}
-        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-            <div style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px; font-size: 14px; transition: all 0.2s;"
-                onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='scale(1.05)'"
-                onmouseout="this.style.borderColor='var(--border)'; this.style.transform='scale(1)'">
-                {{ .name }}
-            </div>
-        </a>
+        <div style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px; font-size: 14px; transition: all 0.2s;"
+            onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='scale(1.05)'"
+            onmouseout="this.style.borderColor='var(--border)'; this.style.transform='scale(1)'">
+            {{ .name }}
+        </div>
         {{- end }}
     </div>
 </div>
