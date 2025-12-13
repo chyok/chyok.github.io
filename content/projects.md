@@ -14,7 +14,7 @@ Here are some of my open source projects.
 > A single-file tkinter-based Ollama GUI project with no external dependencies.
 
 - **Stack**: Python, Tkinter
-- **Stars**: 235+
+- **Stars**: {{< github_stars chyok ollama-gui >}}+
 - **Features**: Lightweight, Model Management, Chat Interface.
 
 ---
@@ -23,7 +23,7 @@ Here are some of my open source projects.
 > A ten drops game written in pygame-ce, sourced from the Flask game "Splash Back".
 
 - **Stack**: Python, Pygame-CE
-- **Stars**: 12+
+- **Stars**: {{< github_stars chyok ten-drops >}}+
 - **Genre**: Puzzle Game
 
 ---
@@ -32,7 +32,7 @@ Here are some of my open source projects.
 > Simple LAN file transfer command line tool.
 
 - **Stack**: Go
-- **Stars**: 12+
+- **Stars**: {{< github_stars chyok st >}}+
 - **Features**: LAN discovery, fast transfer.
 
 ---
@@ -41,4 +41,4 @@ Here are some of my open source projects.
 > Lightweight m3u8 video downloading tool, integrating all features into a single standalone HTML file.
 
 - **Stack**: HTML, JS
-- **Stars**: 9+
+- **Stars**: {{< github_stars chyok m3u8-downloader-minify >}}+
