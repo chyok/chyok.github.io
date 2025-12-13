@@ -1,0 +1,211 @@
+{{- define "main" }}
+
+{{- if (and site.Params.profileMode.enabled .IsHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }} {{/* if not profileMode */}}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+    {{- partial "breadcrumbs.html" . }}
+    <h1>
+        {{ .Title }}
+        {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+        {{- with .OutputFormats.Get "rss" }}
+        <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" height="23">
+                <path d="M4 11a9 9 0 0 1 9 9" />
+                <path d="M4 4a16 16 0 0 1 16 16" />
+                <circle cx="5" cy="19" r="1" />
+            </svg>
+        </a>
+        {{- end }}
+        {{- end }}
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description | markdownify }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $pages := union .RegularPages .Sections }}
+
+{{- if .IsHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+
+{{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
+{{- partial "home_info.html" . }}
+
+{{/* CUSTOM PROJECT LIST START */}}
+<div style="padding: 0 0; max-width: 800px; margin: 30px auto;">
+    <h3 style="margin-bottom: 20px; font-size: 20px; font-weight: bold; text-transform: uppercase;">
+        {{ if eq site.Language.Lang "zh" }}Projects & Tooling{{ else }}Projects & Tooling{{ end }}
+    </h3>
+    <div class="project-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+        {{- range site.Data.projects }}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer"
+            style="text-decoration: none; color: inherit; display: block;">
+            <div class="project-card"
+                style="border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; height: 100%; transition: transform 0.1s; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                        <div
+                            style="font-weight: 600; font-size: 16px; text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.2s;">
+                            {{ .name }}
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 4px; font-size: 14px; opacity: 0.8;">
+                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                                data-view-component="true" style="fill: currentColor; opacity: 0.7;">
+                                <path
+                                    d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z">
+                                </path>
+                            </svg>
+                            <span>{{ .stars }}</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 14px; opacity: 0.8; margin-bottom: 20px; line-height: 1.6;">
+                        {{ if eq site.Language.Lang "zh" }}
+                        {{ .desc_zh }}
+                        {{ else }}
+                        {{ .desc }}
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </a>
+        {{- end }}
+    </div>
+
+    <div style="margin-top: 25px; font-size: 15px; opacity: 0.9;">
+        {{ if eq site.Language.Lang "zh" }}
+        <a href="https://github.com/chyok" target="_blank" rel="noopener noreferrer"
+            style="text-decoration: underline;">View more projects on my GitHub Profile.</a>
+        {{ else }}
+        <a href="https://github.com/chyok" target="_blank" rel="noopener noreferrer"
+            style="text-decoration: underline;">View more projects on my GitHub Profile.</a>
+        {{ end }}
+    </div>
+
+    <style>
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover div[style*="text-decoration"] {
+            text-decoration-color: currentColor !important;
+        }
+
+        @media (max-width: 600px) {
+            .project-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</div>
+{{/* CUSTOM PROJECT LIST END */}}
+
+{{/* CUSTOM TECH STACK START */}}
+<div style="padding: 0 0; max-width: 800px; margin: 40px auto;">
+    <h3 style="margin-bottom: 20px; font-size: 20px; font-weight: bold; text-transform: uppercase;">
+        {{ if eq site.Language.Lang "zh" }}Tech Stack{{ else }}Tech Stack{{ end }}
+    </h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        {{- range site.Data.techstack }}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+            <div style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px; font-size: 14px; transition: all 0.2s;"
+                onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='scale(1.05)'"
+                onmouseout="this.style.borderColor='var(--border)'; this.style.transform='scale(1)'">
+                {{ .name }}
+            </div>
+        </a>
+        {{- end }}
+    </div>
+</div>
+{{/* CUSTOM TECH STACK END */}}
+
+{{- end }}
+
+{{- $term := .Data.Term }}
+{{- range $index, $page := $paginator.Pages }}
+
+{{- $class := "post-entry" }}
+
+{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
+{{- $class = "first-entry" }}
+{{- else if $term }}
+{{- $class = "post-entry tag-entry" }}
+{{- end }}
+
+<article class="{{ $class }}">
+    {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+    {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+    <header class="entry-header">
+        <h2 class="entry-hint-parent">
+            {{- .Title }}
+            {{- if .Draft }}
+            <span class="entry-hint" title="Draft">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+                    <path
+                        d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+                </svg>
+            </span>
+            {{- end }}
+        </h2>
+    </header>
+    {{- if (ne (.Param "hideSummary") true) }}
+    <div class="entry-content">
+        <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <footer class="entry-footer">
+        {{- partial "post_meta.html" . -}}
+    </footer>
+    {{- end }}
+    <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+    <nav class="pagination">
+        {{- if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+            «&nbsp;{{ i18n "prev_page" }}&nbsp;
+            {{- if (.Param "ShowPageNums") }}
+            {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+            {{- end }}
+        </a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+            {{- i18n "next_page" }}&nbsp;
+            {{- if (.Param "ShowPageNums") }}
+            {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+            {{- end }}&nbsp;»
+        </a>
+        {{- end }}
+    </nav>
+</footer>
+{{- end }}
+
+{{- end }}{{/* end profileMode */}}
+
+{{- end }}{{- /* end main */ -}}

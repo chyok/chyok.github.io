@@ -1,0 +1,113 @@
+baseURL: 'https://chyok.github.io/'
+title: chyok
+theme: ["PaperMod"]
+
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: ""
+  - scope:
+      path: ""
+      type: "page"
+    values:
+      layout: ""
+
+params:
+  env: production
+  description: "Sharing programming knowledge and some personal works, documents."
+  keywords: [Blog, Portfolio, PaperMod]
+  author: chyok
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  displayFullLangName: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    favicon: "<link / abs url>"
+    favicon16x16: "<link / abs url>"
+    favicon32x32: "<link / abs url>"
+    apple_touch_icon: "<link / abs url>"
+    safari_pinned_tab: "<link / abs url>"
+
+  socialIcons: []
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    params:
+      title: chyok
+      label:
+        text: "chyok"
+        icon: /apple-touch-icon.png
+        iconHeight: 35
+      homeInfoParams:
+        Title: "[~]$ whoami"
+        Content: "A dedicated Developer with years of **industry experience**, deeply passionate about **coding** and building scalable systems. I also **enjoy contributing** to the **Open Source** community, believing in the power of sharing knowledge and collaborating to drive innovation."
+    menu:
+      main:
+        - identifier: projects
+          name: Projects
+          url: /projects/
+          weight: 10
+        - identifier: about
+          name: About
+          url: /about/
+          weight: 20
+
+  zh:
+    languageName: "中文"
+    languageCode: "zh-cn"
+    weight: 2
+    params:
+      title: chyok
+      label:
+        text: "chyok"
+        icon: /apple-touch-icon.png
+        iconHeight: 35
+      homeInfoParams:
+        Title: "[~]$ whoami"
+        Content: "一名热爱**编码**的开发者，拥有多年**行业经验**，致力于构建高效、可扩展的系统。我也**乐于**在 **Open Source** 社区分享和贡献，坚信分享知识和协作创新能推动技术不断前行。"
+    menu:
+      main:
+        - identifier: projects
+          name: 项目
+          url: /zh/projects/
+          weight: 10
+        - identifier: about
+          name: 关于
+          url: /zh/about/
+          weight: 20

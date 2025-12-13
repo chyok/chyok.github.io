@@ -1,0 +1,38 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1 style="font-family: monospace; font-size: 26px; margin-bottom: 12px; font-weight: bold;">{{ .Title |
+            markdownify }}</h1>
+    </header>
+    <div class="entry-content" style="opacity: 0.9; line-height: 1.6; font-size: 1.1em;">
+        {{ .Content | markdownify }}
+    </div>
+    <div style="margin-top: 15px; font-size: 14px;">
+        <a href="{{ if eq site.Language.Lang " zh" }}/zh/about/{{ else }}/about/{{ end }}"
+            style="text-decoration: underline;">
+            {{ if eq site.Language.Lang "zh" }}了解更多...{{ else }}Read more...{{ end }}
+        </a>
+    </div>
+    <div style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
+        Email: <a href="mailto:chyok@hotmail.com" style="text-decoration: underline;">chyok@hotmail.com</a>
+    </div>
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+    </footer>
+</article>
+<style>
+    .home-info {
+        background-color: var(--entry);
+        padding: 30px;
+        border-radius: var(--radius);
+        margin-bottom: 40px;
+        border: 1px solid var(--border);
+    }
+
+    .dark .home-info {
+        background-color: rgb(30, 30, 30);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+    }
+</style>
+{{- end -}}
