@@ -83,6 +83,10 @@ languages:
           name: Projects
           url: /projects/
           weight: 10
+        - identifier: archive
+          name: Archive
+          url: /archive/
+          weight: 15
         - identifier: about
           name: About
           url: /about/
@@ -107,6 +111,10 @@ languages:
           name: 项目
           url: /zh/projects/
           weight: 10
+        - identifier: archive
+          name: 归档
+          url: /zh/archive/
+          weight: 15
         - identifier: about
           name: 关于
           url: /zh/about/
