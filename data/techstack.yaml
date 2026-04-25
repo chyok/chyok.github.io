@@ -1,47 +1,23 @@
 - name: Python
-  icon: "python"
-  url: "https://www.python.org/"
 
 - name: Go
-  icon: "go"
-  url: "https://go.dev/"
-
-- name: LLM
-  icon: "openai"
-  url: "https://openai.com/"
-
-- name: RAG
-  icon: "langchain"
-  url: "https://www.langchain.com/"
-
-- name: AI Agents
-  icon: "robot"
-  url: "https://en.wikipedia.org/wiki/Intelligent_agent"
 
 - name: JavaScript
-  icon: "javascript"
-  url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+
+- name: CI/CD
+
+- name: LLM Orchestration
+
+- name: AI Agents
+
+- name: RAG
+
+- name: Model Context Protocol
 
 - name: Kubernetes
-  icon: "kubernetes"
-  url: "https://kubernetes.io/"
 
 - name: Docker
-  icon: "docker"
-  url: "https://www.docker.com/"
 
 - name: Linux
-  icon: "linux"
-  url: "https://www.linux.org/"
-
-- name: Bash
-  icon: "gnu-bash"
-  url: "https://www.gnu.org/software/bash/"
-
-- name: Git
-  icon: "git"
-  url: "https://git-scm.com/"
 
 - name: ...
-  icon: "code"
-  url: "#"
