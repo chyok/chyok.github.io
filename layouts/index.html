@@ -60,7 +60,7 @@
         <a href="{{ .url }}" target="_blank" rel="noopener noreferrer"
             style="text-decoration: none; color: inherit; display: block;">
             <div class="project-card"
-                style="border: 1px solid var(--border); border-radius: var(--radius); padding: 15px; height: 100%; transition: transform 0.1s; display: flex; flex-direction: column; justify-content: space-between;">
+                style="border: 1px solid var(--tertiary); border-radius: var(--radius); padding: 15px; height: 100%; transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);">
                 <div>
                     <div
                         style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
@@ -139,6 +139,7 @@
 
 {{- end }}
 
+{{- if not .IsHome }}
 {{- $term := .Data.Term }}
 {{- range $index, $page := $paginator.Pages }}
 
@@ -179,6 +180,7 @@
     {{- end }}
     <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
 </article>
+{{- end }}
 {{- end }}
 
 {{- if gt $paginator.TotalPages 1 }}
