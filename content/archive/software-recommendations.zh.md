@@ -1,14 +1,14 @@
 ---
-title: "推荐软件"
+title: "常用软件和工具"
 date: 2026-04-23
 draft: false
-summary: "值得安装和长期保留的软件清单。"
+summary: "记录常用、备用或值得长期保留的软件和工具。"
 translationKey: "archive-software-recommendations"
 categories: ["tool"]
 tags: ["macOS", "Windows", "CLI"]
 ---
 
-这篇文章专门放软件推荐，和配置说明分开维护。以后如果只是记录“推荐安装什么”，优先加到这里；如果是某个工具或系统的具体设置步骤，则新建一篇配置文章。
+这里记录一些常用、备用，或者以后装机时可能还会想起的软件和工具。
 
 ## 软件
 

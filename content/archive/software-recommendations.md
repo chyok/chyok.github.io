@@ -1,14 +1,14 @@
 ---
-title: "Recommended Software"
+title: "Software and Tools"
 date: 2026-04-23
 draft: false
-summary: "A short list of tools worth installing and keeping around."
+summary: "A personal list of software and tools I use or keep around."
 translationKey: "archive-software-recommendations"
 categories: ["tool"]
 tags: ["macOS", "Windows", "CLI"]
 ---
 
-This page keeps software recommendations separate from configuration notes, so the archive can stay focused on reusable setup records.
+This is a personal record of software and tools I use, revisit, or keep around for future setup.
 
 ## Apps
 
