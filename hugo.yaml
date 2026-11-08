@@ -23,23 +23,13 @@ outputs:
     - RSS
     - JSON
 
-defaults:
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: ""
-  - scope:
-      path: ""
-      type: "page"
-    values:
-      layout: ""
-
 params:
   env: production
   description: "Sharing programming knowledge and some personal works, documents."
   keywords: [Blog, Portfolio]
   author: chyok
+  # Fallback preview image for link sharing (Open Graph / Twitter cards)
+  images: ["favicon.png"]
   email: chyok@hotmail.com
   githubUser: chyok
   DateFormat: "January 2, 2006"
@@ -76,7 +66,7 @@ params:
 
 languages:
   en:
-    languageName: "English"
+    label: "English"
     weight: 1
     params:
       title: chyok
@@ -101,10 +91,14 @@ languages:
           name: About
           url: /about/
           weight: 20
+        - identifier: search
+          name: Search
+          url: /search/
+          weight: 30
 
   zh:
-    languageName: "中文"
-    languageCode: "zh-cn"
+    label: "中文"
+    locale: "zh-CN"
     weight: 2
     params:
       title: chyok
@@ -129,3 +123,7 @@ languages:
           name: 关于
           url: /zh/about/
           weight: 20
+        - identifier: search
+          name: 搜索
+          url: /zh/search/
+          weight: 30
