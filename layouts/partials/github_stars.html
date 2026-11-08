@@ -1,0 +1,22 @@
+{{- /*
+  Returns a repo's star count, fetched from the GitHub API at build time.
+  Falls back to the given "stars" value when the request fails (offline, rate limit).
+  Set HUGO_GITHUB_TOKEN to raise the API rate limit.
+  Usage: partial "github_stars.html" (dict "repo" "chyok/st" "stars" 12)
+*/ -}}
+{{- $count := .stars -}}
+{{- $headers := dict "Accept" "application/vnd.github+json" -}}
+{{- with getenv "HUGO_GITHUB_TOKEN" -}}
+  {{- $headers = merge $headers (dict "Authorization" (printf "Bearer %s" .)) -}}
+{{- end -}}
+{{- $url := printf "https://api.github.com/repos/%s" .repo -}}
+{{- with try (resources.GetRemote $url (dict "headers" $headers)) -}}
+  {{- with .Err -}}
+    {{- warnf "github_stars: %s" . -}}
+  {{- else with .Value -}}
+    {{- with (.Content | transform.Unmarshal).stargazers_count -}}
+      {{- $count = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $count -}}

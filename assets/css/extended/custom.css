@@ -1,0 +1,160 @@
+body.list {
+    background: var(--theme);
+}
+
+/* Home intro card */
+.home-info {
+    background-color: var(--entry);
+    padding: 30px;
+    border-radius: var(--radius);
+    margin-bottom: 40px;
+    border: 1px solid var(--tertiary);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.dark .home-info {
+    background-color: rgb(30, 30, 30);
+    box-shadow: none;
+}
+
+.home-info .home-info-title {
+    font-family: monospace;
+    font-size: 26px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.home-info .entry-content {
+    opacity: 0.9;
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+.home-info-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.home-info-email {
+    margin-top: 10px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.home-info-link a,
+.home-info-email a,
+.home-section-more a {
+    text-decoration: underline;
+}
+
+/* Home sections */
+.home-section {
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.home-section + .home-section {
+    margin-top: 40px;
+}
+
+.home-section-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.home-section-more {
+    margin-top: 25px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* Project cards */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.project-card {
+    display: block;
+    height: 100%;
+    padding: 15px;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid var(--tertiary);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.project-name {
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.2s;
+}
+
+.project-card:hover .project-name {
+    text-decoration-color: currentColor;
+}
+
+.project-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.project-stars svg {
+    fill: currentColor;
+    opacity: 0.7;
+}
+
+.project-desc {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tech stack pills */
+.techstack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.techstack-item {
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.techstack-item:hover {
+    border-color: var(--primary);
+    transform: scale(1.05);
+}

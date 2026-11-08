@@ -11,6 +11,12 @@ minify:
   disableXML: true
   minifyOutput: true
 
+# GitHub star counts are fetched at build time; re-fetch at most every 6 hours locally.
+caches:
+  getresource:
+    dir: :cacheDir/:project
+    maxAge: 6h
+
 outputs:
   home:
     - HTML
@@ -32,8 +38,10 @@ defaults:
 params:
   env: production
   description: "Sharing programming knowledge and some personal works, documents."
-  keywords: [Blog, Portfolio, PaperMod]
+  keywords: [Blog, Portfolio]
   author: chyok
+  email: chyok@hotmail.com
+  githubUser: chyok
   DateFormat: "January 2, 2006"
   defaultTheme: auto
   disableThemeToggle: false
@@ -42,7 +50,7 @@ params:
   ShowShareButtons: false
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
@@ -62,7 +70,9 @@ params:
     apple_touch_icon: "/favicon.png"
     safari_pinned_tab: "/favicon.png"
 
-  socialIcons: []
+  socialIcons:
+    - name: github
+      url: "https://github.com/chyok"
 
 languages:
   en:

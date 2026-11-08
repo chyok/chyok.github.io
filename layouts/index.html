@@ -51,90 +51,43 @@
 {{- partial "home_info.html" . }}
 
 {{/* CUSTOM PROJECT LIST START */}}
-<div style="padding: 0 0; max-width: 800px; margin: 30px auto;">
-    <h3 style="margin-bottom: 20px; font-size: 20px; font-weight: bold; text-transform: uppercase;">
-        {{ if eq site.Language.Lang "zh" }}Projects & Tooling{{ else }}Projects & Tooling{{ end }}
-    </h3>
-    <div class="project-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+<section class="home-section">
+    <h3 class="home-section-title">{{ i18n "home_projects_title" }}</h3>
+    <div class="project-grid">
         {{- range site.Data.projects }}
-        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer"
-            style="text-decoration: none; color: inherit; display: block;">
-            <div class="project-card"
-                style="border: 1px solid var(--tertiary); border-radius: var(--radius); padding: 15px; height: 100%; transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);">
-                <div>
-                    <div
-                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
-                        <div
-                            style="font-weight: 600; font-size: 16px; text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.2s;">
-                            {{ .name }}
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 4px; font-size: 14px; opacity: 0.8;">
-                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
-                                data-view-component="true" style="fill: currentColor; opacity: 0.7;">
-                                <path
-                                    d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z">
-                                </path>
-                            </svg>
-                            <span class="github-stars" data-user="chyok" data-repo="{{ .name }}">{{ .stars }}</span>
-                        </div>
-                    </div>
-                    <div style="font-size: 14px; opacity: 0.8; margin-bottom: 20px; line-height: 1.6;">
-                        {{ if eq site.Language.Lang "zh" }}
-                        {{ .desc_zh }}
-                        {{ else }}
-                        {{ .desc }}
-                        {{ end }}
-                    </div>
-                </div>
+        <a class="project-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-head">
+                <span class="project-name">{{ .name }}</span>
+                <span class="project-stars">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" width="16">
+                        <path
+                            d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z">
+                        </path>
+                    </svg>
+                    {{ partial "github_stars.html" (dict "repo" (printf "%s/%s" site.Params.githubUser .name) "stars" .stars) }}
+                </span>
             </div>
+            <p class="project-desc">{{ index . (printf "desc_%s" site.Language.Lang) | default .desc }}</p>
         </a>
         {{- end }}
     </div>
-
-    <div style="margin-top: 25px; font-size: 15px; opacity: 0.9;">
-        {{ if eq site.Language.Lang "zh" }}
-        <a href="https://github.com/chyok" target="_blank" rel="noopener noreferrer"
-            style="text-decoration: underline;">View more projects on my GitHub Profile.</a>
-        {{ else }}
-        <a href="https://github.com/chyok" target="_blank" rel="noopener noreferrer"
-            style="text-decoration: underline;">View more projects on my GitHub Profile.</a>
-        {{ end }}
+    <div class="home-section-more">
+        <a href="https://github.com/{{ site.Params.githubUser }}" target="_blank" rel="noopener noreferrer">
+            {{- i18n "home_more_projects" -}}
+        </a>
     </div>
-
-    <style>
-        .project-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-card:hover div[style*="text-decoration"] {
-            text-decoration-color: currentColor !important;
-        }
-
-        @media (max-width: 600px) {
-            .project-grid {
-                grid-template-columns: 1fr !important;
-            }
-        }
-    </style>
-</div>
+</section>
 {{/* CUSTOM PROJECT LIST END */}}
 
 {{/* CUSTOM TECH STACK START */}}
-<div style="padding: 0 0; max-width: 800px; margin: 40px auto;">
-    <h3 style="margin-bottom: 20px; font-size: 20px; font-weight: bold; text-transform: uppercase;">
-        {{ if eq site.Language.Lang "zh" }}Tech Stack{{ else }}Tech Stack{{ end }}
-    </h3>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<section class="home-section">
+    <h3 class="home-section-title">{{ i18n "home_techstack_title" }}</h3>
+    <div class="techstack">
         {{- range site.Data.techstack }}
-        <div style="border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px; font-size: 14px; transition: all 0.2s;"
-            onmouseover="this.style.borderColor='var(--primary)'; this.style.transform='scale(1.05)'"
-            onmouseout="this.style.borderColor='var(--border)'; this.style.transform='scale(1)'">
-            {{ .name }}
-        </div>
+        <div class="techstack-item">{{ .name }}</div>
         {{- end }}
     </div>
-</div>
+</section>
 {{/* CUSTOM TECH STACK END */}}
 
 {{- end }}

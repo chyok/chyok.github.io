@@ -1,0 +1,22 @@
+{{- /* Renders the project list from data/projects.yaml. Usage: {{< projects >}} */ -}}
+{{- $lang := site.Language.Lang -}}
+{{- $projects := site.Data.projects -}}
+{{- range $i, $p := $projects }}
+{{- $desc := index $p (printf "desc_%s" $lang) | default $p.desc }}
+{{- $detail := index $p (printf "detail_%s" $lang) | default $p.detail | default $desc }}
+{{- $features := index $p (printf "features_%s" $lang) | default $p.features }}
+<h3 id="{{ $p.name | anchorize }}"><a href="{{ $p.url }}" target="_blank" rel="noopener noreferrer">{{ $p.name }}</a></h3>
+<blockquote>
+<p>{{ $detail }}</p>
+</blockquote>
+<ul>
+<li><strong>{{ i18n "projects_stack" }}</strong>: {{ delimit $p.stack ", " }}</li>
+<li><strong>{{ i18n "projects_stars" }}</strong>: {{ partial "github_stars.html" (dict "repo" (printf "%s/%s" site.Params.githubUser $p.name) "stars" $p.stars) }}</li>
+{{- with $features }}
+<li><strong>{{ i18n "projects_features" }}</strong>: {{ . }}</li>
+{{- end }}
+</ul>
+{{- if lt (add $i 1) (len $projects) }}
+<hr>
+{{- end }}
+{{- end }}
