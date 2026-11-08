@@ -1,0 +1,41 @@
+{{- define "main" }}
+
+{{- partial "home_info.html" . }}
+
+<section class="home-section">
+    <h3 class="home-section-title">{{ i18n "home_projects_title" }}</h3>
+    <div class="project-grid">
+        {{- range hugo.Data.projects }}
+        <a class="project-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-head">
+                <span class="project-name">{{ .name }}</span>
+                <span class="project-stars">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" width="16">
+                        <path
+                            d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z">
+                        </path>
+                    </svg>
+                    {{ partial "github_stars.html" (dict "repo" (printf "%s/%s" site.Params.githubUser .name) "stars" .stars) }}
+                </span>
+            </div>
+            <p class="project-desc">{{ index . (printf "desc_%s" site.Language.Lang) | default .desc }}</p>
+        </a>
+        {{- end }}
+    </div>
+    <div class="home-section-more">
+        <a href="https://github.com/{{ site.Params.githubUser }}" target="_blank" rel="noopener noreferrer">
+            {{- i18n "home_more_projects" -}}
+        </a>
+    </div>
+</section>
+
+<section class="home-section">
+    <h3 class="home-section-title">{{ i18n "home_techstack_title" }}</h3>
+    <div class="techstack">
+        {{- range hugo.Data.techstack }}
+        <div class="techstack-item">{{ .name }}</div>
+        {{- end }}
+    </div>
+</section>
+
+{{- end }}

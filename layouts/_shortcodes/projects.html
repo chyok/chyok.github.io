@@ -1,6 +1,6 @@
 {{- /* Renders the project list from data/projects.yaml. Usage: {{< projects >}} */ -}}
 {{- $lang := site.Language.Lang -}}
-{{- $projects := site.Data.projects -}}
+{{- $projects := hugo.Data.projects -}}
 {{- range $i, $p := $projects }}
 {{- $desc := index $p (printf "desc_%s" $lang) | default $p.desc }}
 {{- $detail := index $p (printf "detail_%s" $lang) | default $p.detail | default $desc }}

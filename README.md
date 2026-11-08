@@ -4,6 +4,16 @@ This is a Hugo site using the PaperMod theme. The main configuration file is `hu
 
 ## Local Preview
 
+The PaperMod theme is a git submodule, so clone with submodules:
+
+```bash
+git clone --recurse-submodules git@github.com:chyok/chyok.github.io.git
+```
+
+In an existing clone without the theme, run `git submodule update --init` instead.
+
+This site needs Hugo extended v0.158.0 or newer (CI pins the version in `.github/workflows/hugo.yml`). Then start the preview:
+
 ```bash
 hugo server -D
 ```
