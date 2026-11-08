@@ -60,6 +60,10 @@ params:
     apple_touch_icon: "/favicon.png"
     safari_pinned_tab: "/favicon.png"
 
+  analytics:
+    cloudflare:
+      token: "febbba1a54e043d58e2f9816b86b56e8"
+
   socialIcons:
     - name: github
       url: "https://github.com/chyok"
