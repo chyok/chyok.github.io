@@ -8,7 +8,7 @@
         {{ .Content | markdownify }}
     </div>
     <div style="margin-top: 15px; font-size: 14px;">
-        <a href="{{ if eq site.Language.Lang " zh" }}/zh/about/{{ else }}/about/{{ end }}"
+        <a href="{{ "about/" | relLangURL }}"
             style="text-decoration: underline;">
             {{ if eq site.Language.Lang "zh" }}了解更多...{{ else }}Read more...{{ end }}
         </a>

@@ -72,7 +72,7 @@ languages:
       title: chyok
       label:
         text: "chyok"
-        icon: /apple-touch-icon.png
+        icon: /favicon.png
         iconHeight: 35
       homeInfoParams:
         Title: "[~]$ whoami"
@@ -100,7 +100,7 @@ languages:
       title: chyok
       label:
         text: "chyok"
-        icon: /apple-touch-icon.png
+        icon: /favicon.png
         iconHeight: 35
       homeInfoParams:
         Title: "[~]$ whoami"
